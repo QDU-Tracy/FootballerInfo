@@ -1,8 +1,9 @@
 package com.springboot.demo.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class PlayerData {
+public class PlayerData implements Serializable {
     private int pId;
     private String pName;
     private short pCa;

@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
 public interface PlayerMapper {
 
     //get全部
+    @Cacheable(value = "getAll",key = "1")
     @Select("select * from player")
     public List<Player> getAll();
 

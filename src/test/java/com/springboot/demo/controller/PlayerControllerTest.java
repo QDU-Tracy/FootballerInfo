@@ -38,4 +38,12 @@ public class PlayerControllerTest {
         System.out.println(playerData.toString());
 
     }
+
+    @Test
+    public void getAllPlayer(){
+
+        List<Player> list = new ArrayList<>();
+        list = playerMapper.getAll();
+        System.out.printf(list.toString());
+    }
 }
