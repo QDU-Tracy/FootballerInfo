@@ -13,8 +13,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -49,5 +51,19 @@ public class PlayerControllerTest {
         List<Player> list = new ArrayList<>();
         list = playerService.getAll();
         System.out.printf(list.toString());
+    }
+
+    @Test
+    public void getDynamicPlayerTest() throws ParseException {
+        List<Player> list = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
+        DateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = dateFormat1.parse("1998-06-01");
+
+        map.put("pCa", 100);
+        map.put("pCountry", "Argentina");
+        map.put("pBirthdate", date);
+        list = playerService.getDynamicPlayer(map);
+        System.out.println(list.toString());
     }
 }

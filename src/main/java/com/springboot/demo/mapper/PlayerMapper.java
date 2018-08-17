@@ -6,6 +6,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 添加了@Mapper注解之后这个接口在编译时会生成相应的实现类
@@ -18,14 +19,13 @@ import java.util.List;
 public interface PlayerMapper {
 
     //get全部
-//    @Cacheable(value = "getAll",key = "1")
-//    @Select("select * from player")
     List<Player> getAll();
 
-//    @Select("select * from player where p_name like CONCAT(CONCAT('%', #{pName}),'%')")
     List<Player> getByName(@Param("pName") String pName);
 
-//    @Options(useGeneratedKeys=true,keyProperty="pId")
-//    @Insert("insert into player(p_name,p_ca) values(#{pName},#{pCa})")
-//    public Integer save(Player player);
+    //get热度球员
+    List<Player> getTop();
+
+    // 动态查询(测试)
+    List<Player> getDynamicPlayer(Map<String, Object> dynamicMap);
 }

@@ -1,6 +1,7 @@
 package com.springboot.demo.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Player implements Serializable {
     private int pId;
@@ -10,6 +11,8 @@ public class Player implements Serializable {
     private String pCountry;
     private short pHeight;
     private short pWeight;
+    private Date pBirthdate;
+    private int pHotDegree;
 
     public Player() {
     }
@@ -70,6 +73,22 @@ public class Player implements Serializable {
         this.pWeight = pWeight;
     }
 
+    public Date getpBirthdate() {
+        return pBirthdate;
+    }
+
+    public void setpBirthdate(Date pBirthdate) {
+        this.pBirthdate = pBirthdate;
+    }
+
+    public int getpHotDegree() {
+        return pHotDegree;
+    }
+
+    public void setpHotDegree(int pHotDegree) {
+        this.pHotDegree = pHotDegree;
+    }
+
     @Override
     public String toString() {
         return "Player{" +
@@ -80,6 +99,8 @@ public class Player implements Serializable {
                 ", pCountry='" + pCountry + '\'' +
                 ", pHeight=" + pHeight +
                 ", pWeight=" + pWeight +
+                ", pBirthdate=" + pBirthdate +
+                ", pHotDegree=" + pHotDegree +
                 '}';
     }
 }

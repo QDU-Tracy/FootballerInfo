@@ -45,5 +45,12 @@ public class PlayerController {
         return playerDataService.getPlayerDataById(pId);
     }
 
+    @RequestMapping("/getTopPlayer")
+    public List<Player> getTopPlayer(){
+        List<Player> list = new ArrayList<>();
+
+        return playerService.getTop();
+    }
+
 
 }
