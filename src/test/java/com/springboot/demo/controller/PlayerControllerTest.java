@@ -4,6 +4,8 @@ import com.springboot.demo.entity.Player;
 import com.springboot.demo.entity.PlayerData;
 import com.springboot.demo.mapper.PlayerDataMapper;
 import com.springboot.demo.mapper.PlayerMapper;
+import com.springboot.demo.service.PlayerDataService;
+import com.springboot.demo.service.PlayerService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,27 +16,29 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 public class PlayerControllerTest {
+
     @Autowired
-    private PlayerMapper playerMapper;
+    private PlayerDataService playerDataService;
+
     @Autowired
-    private PlayerDataMapper playerDataMapper;
+    private PlayerService playerService;
+
     @Test
     public void getPlayerByName() {
         List<Player> list = new ArrayList<>();
-        list = playerMapper.getByName("messi");
+        list = playerService.getPlayerByName("messi");
         System.out.printf(list.toString());
-
     }
+
+
     @Test
     public void getPlayerDataById(){
         PlayerData playerData = new PlayerData();
-        playerData = playerDataMapper.getByName(1);
+        playerData = playerDataService.getPlayerDataById(1);
         System.out.println(playerData.toString());
 
     }
@@ -43,7 +47,7 @@ public class PlayerControllerTest {
     public void getAllPlayer(){
 
         List<Player> list = new ArrayList<>();
-        list = playerMapper.getAll();
+        list = playerService.getAll();
         System.out.printf(list.toString());
     }
 }
